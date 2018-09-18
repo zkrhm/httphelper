@@ -8,8 +8,8 @@ import (
 	"github.com/oleiade/reflections"
 )
 
-//GetRequest ...
-func GetRequest(r *http.Request, reqObj interface{}) error {
+//ReadJSON read passed struct as json.
+func ReadJSON(r *http.Request, reqObj interface{}) error {
 	b, err := ioutil.ReadAll(r.Body)
 	if err != nil {
 		return err
@@ -20,8 +20,9 @@ func GetRequest(r *http.Request, reqObj interface{}) error {
 	return nil
 }
 
-//WriteResponse ...
-func WriteResponse(w http.ResponseWriter, resObj interface{}) error {
+//WriteResponse writing response content (struct) to as json
+//
+func WriteAsJSON(w http.ResponseWriter, resObj interface{}) error {
 
 	w.Header().Set("Content-Type", "application/json")
 
