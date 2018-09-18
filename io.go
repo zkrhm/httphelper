@@ -9,6 +9,9 @@ import (
 )
 
 //ReadJSON read passed struct as json.
+//params:
+// - reader http.Request
+// - request Object : interface
 func ReadJSON(r *http.Request, reqObj interface{}) error {
 	b, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -20,8 +23,10 @@ func ReadJSON(r *http.Request, reqObj interface{}) error {
 	return nil
 }
 
-//WriteResponse writing response content (struct) to as json
-//
+//WriteAsJSON writing response content (struct) to as json
+//params :
+// - response http.ResponseWriter
+// - responseObject interface
 func WriteAsJSON(w http.ResponseWriter, resObj interface{}) error {
 
 	w.Header().Set("Content-Type", "application/json")
